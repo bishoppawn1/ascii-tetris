@@ -1,19 +1,26 @@
-
+tetris_board_chars_map = {
+    0: "█",
+    1: "▓",
+    2: "▒",
+    3: "░"
+}
 
 
 # converts one integer to ascii character
 def int_to_ascii(i):
 
-    if (i == 0):
-        return "█"
-    if (i == 1):
-        return "▓"
-    if (i == 2):
-        return "▒"
-    if (i == 3):
-        return "░"
-    else:
-        return
+    return tetris_board_chars_map[i]
+
+    # if (i == 0):
+    #     return "█"
+    # if (i == 1):
+    #     return "▓"
+    # if (i == 2):
+    #     return "▒"
+    # if (i == 3):
+    #     return "░"
+    # else:
+    #     return
 
 
 # convert int array to ascii characters
