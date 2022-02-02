@@ -38,16 +38,16 @@ def value_at(board, x, y):
 
 def is_play_space(board, x, y):
   """checks is the space is a legit play space"""
-  coordanate_value = value_at(board, x, y)
-  if coordanate_value == 30 | coordanate_value == 0:
+  coordinate_value = value_at(board, x, y)
+  if coordinate_value == 30 | coordinate_value == 0:
     return True
   else:
     return False
 
 def is_occupied(board, x, y):
   """ckecks if the space is occupied"""
-  coordanate_value = value_at(board, x, y)
-  if coordanate_value == 0 | coordanate_value == 31 | coordanate_value == 32 | coordanate_value == 33 | coordanate_value == 34 | coordanate_value == 35:
+  coordinate_value = value_at(board, x, y)
+  if coordinate_value == 0 | coordinate_value == 31 | coordinate_value == 32 | coordinate_value == 33 | coordinate_value == 34 | coordinate_value == 35:
     return True
   else:
     return False
