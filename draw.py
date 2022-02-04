@@ -2,7 +2,7 @@ import time
 # 1: "▓▓", 2: "▒▒", 3: "░░"
 tetris_board_chars_map = {
     0: "██",
-    20: " .",
+    30: " .",
 
     31: "<!",
     32: "==",
@@ -40,5 +40,5 @@ def int_2d_array_to_ascii_characters(int_2d_array):
 def draw_int_2d_array(int_2d_array):
     print(int_2d_array_to_ascii_characters(int_2d_array))
 
-draw_int_2d_array(classic_tetris_board)
+
 
