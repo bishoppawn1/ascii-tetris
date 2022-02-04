@@ -1,3 +1,4 @@
+import numpy as np
 classic_tetris_board = \
     [[31, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 35],
      [31, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 35],
@@ -28,7 +29,11 @@ def __flip_y(board, y):
 
 
 # public functions
+def copy(board):
+    board = np.array([[23,34,45], [24, 45, 78]])
 
+    board_copy = board.copy()
+    return board_copy
 
 
 
@@ -47,7 +52,12 @@ def is_play_space(board, x, y):
 def is_occupied(board, x, y):
   """ckecks if the space is occupied"""
   coordinate_value = value_at(board, x, y)
-  if coordinate_value == 0 | coordinate_value == 31 | coordinate_value == 32 | coordinate_value == 33 | coordinate_value == 34 | coordinate_value == 35:
+  if coordinate_value == 0 | \
+          coordinate_value == 31 | \
+          coordinate_value == 32 | \
+          coordinate_value == 33 | \
+          coordinate_value == 34 | \
+          coordinate_value == 35:
     return True
   else:
     return False
