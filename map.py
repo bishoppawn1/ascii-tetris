@@ -1,16 +1,18 @@
+class Person:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
 
-tesla_car = {
-    "vehicle": "car",
-    "model": "tesla",
-    "electric": "yes",
-    "range": "medium",
-    "cost": "high",
-    "year": "2021",
-    "colors": ["silver", "red", "blue"],
-    "time": "1year",
-    "new": "yes"
-}
+    def hi(self):
+        print("hi my age and name are " + self.name + " " + self.age)
 
-print(tesla_car["cost"])
-tesla_car["cost"] = "24000"
-print(tesla_car["cost"])
+list1 = []
+list1.append(Person("Bishop", "8"))
+list1.append(Person("Aires", "4"))
+list1.append(Person("mom", "37"))
+list1.append(Person("dad", "38"))
+i = 0
+while len(list1) > i:
+    z = list1[i]
+    z.hi()
+    i += 1
