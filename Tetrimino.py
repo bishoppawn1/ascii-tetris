@@ -1,6 +1,7 @@
 from enum import Enum
-import piece
-
+import piece, board, draw
+class Orientation(Enum):
+    UP, DOWN, LEFT, RIGHT = range(4)
 
 class Rotation(Enum):
     CW, CCW = range(2)
@@ -20,30 +21,30 @@ class Tetromino:
 
     def rotate(self, rotation):
         if rotation == Rotation.CW:
-            if self.orientation == piece.Orientation.UP:
-                self.orientation = piece.Orientation.RIGHT
+            if self.orientation == Orientation.UP:
+                self.orientation = Orientation.RIGHT
 
-            elif self.orientation == piece.Orientation.RIGHT:
-                self.orientation = piece.Orientation.DOWN
+            elif self.orientation == Orientation.RIGHT:
+                self.orientation = Orientation.DOWN
 
-            elif self.orientation == piece.Orientation.DOWN:
-                self.orientation = piece.Orientation.LEFT
+            elif self.orientation == Orientation.DOWN:
+                self.orientation = Orientation.LEFT
 
-            elif self.orientation == piece.Orientation.LEFT:
-                self.orientation = piece.Orientation.UP
+            elif self.orientation == Orientation.LEFT:
+                self.orientation = Orientation.UP
 
         if rotation == Rotation.CCW:
-            if self.orientation == piece.Orientation.RIGHT:
-                self.orientation = piece.Orientation.UP
+            if self.orientation == Orientation.RIGHT:
+                self.orientation = Orientation.UP
 
-            elif self.orientation == piece.Orientation.DOWN:
-                self.orientation = piece.Orientation.RIGHT
+            elif self.orientation == Orientation.DOWN:
+                self.orientation = Orientation.RIGHT
 
-            elif self.orientation == piece.Orientation.LEFT:
-                self.orientation = piece.Orientation.DOWN
+            elif self.orientation == Orientation.LEFT:
+                self.orientation = Orientation.DOWN
 
-            elif self.orientation == piece.Orientation.UP:
-                self.orientation = piece.Orientation.LEFT
+            elif self.orientation == Orientation.UP:
+                self.orientation = Orientation.LEFT
 
     def can_move(self, board):
         return True
@@ -58,16 +59,56 @@ class Tetromino:
         if movement == Movement.DOWN:
             self.location[1] -= 1
 
-    def draw(self, board):
-        return True
+    def add_to_board(self, board):
+        raise Exception("there is no draw method for this parent class")
 
 
 class I_tetrimino(Tetromino):
     def __init__(self, orientation, location):
         super().__init__(orientation, location)
 
+    def add_to_board(self, drawing_board):
+        if self.orientation == Orientation.DOWN:
+            # center
+            board.set_value_at(drawing_board, self.location[0], self.location[1], 0)
+            # upper
+            board.set_value_at(drawing_board, self.location[0], self.location[1] + 1, 0)
+            # lower
+            board.set_value_at(drawing_board, self.location[0], self.location[1] - 1, 0)
+            # upper2
+            board.set_value_at(drawing_board, self.location[0], self.location[1] + 2, 0)
+        elif self.orientation == Orientation.RIGHT:
+            # center
+            board.set_value_at(drawing_board, self.location[0], self.location[1], 0)
+            # left
+            board.set_value_at(drawing_board, self.location[0] - 1, self.location[1], 0)
+            # right
+            board.set_value_at(drawing_board, self.location[0] + 1, self.location[1], 0)
+            # right2
+            board.set_value_at(drawing_board, self.location[0] + 2, self.location[1], 0)
+        if self.orientation == Orientation.UP:
+
+            # center
+            board.set_value_at(drawing_board, self.location[0], self.location[1], 0)
+            # upper
+            board.set_value_at(drawing_board, self.location[0], self.location[1] + 1, 0)
+            # lower
+            board.set_value_at(drawing_board, self.location[0], self.location[1] - 1, 0)
+            # upper2
+            board.set_value_at(drawing_board, self.location[0], self.location[1] + 2, 0)
+        elif self.orientation == Orientation.LEFT:
+            # center
+            board.set_value_at(drawing_board, self.location[0], self.location[1], 0)
+            # left
+            board.set_value_at(drawing_board, self.location[0] - 1, self.location[1], 0)
+            # right
+            board.set_value_at(drawing_board, self.location[0] + 1, self.location[1], 0)
+            # right2
+            board.set_value_at(drawing_board, self.location[0] + 2, self.location[1], 0)
 
 
-tetrimino_1 = I_tetrimino(piece.Orientation.UP, [5, 5])
-tetrimino_1.move(Movement.LEFT)
-print(tetrimino_1.location)
+
+
+tetrimino_1 = I_tetrimino(Orientation.DOWN, [5, 5])
+tetrimino_1.add_to_board(board.classic_tetris_board)
+draw.draw_int_2d_array(board.classic_tetris_board)
