@@ -233,15 +233,98 @@ class J_tetrimino(Tetromino):
             # lower
             board.set_value_at(drawing_board, self.location[0], self.location[1] - 1, 0)
 
+class O_tetrimino(Tetromino):
+    def __init__(self, orientation, location):
+        super().__init__(orientation, location)
+    def add_to_board(self, drawing_board):
+        if self.orientation == Orientation.DOWN:
+            # center
+            board.set_value_at(drawing_board, self.location[0], self.location[1], 0)
+            # lower
+            board.set_value_at(drawing_board, self.location[0], self.location[1] - 1, 0)
+            # left
+            board.set_value_at(drawing_board, self.location[0] - 1, self.location[1], 0)
+            # left-lower
+            board.set_value_at(drawing_board, self.location[0] - 1, self.location[1] - 1, 0)
+        elif self.orientation == Orientation.UP:
+            # center
+            board.set_value_at(drawing_board, self.location[0], self.location[1], 0)
+            # lower
+            board.set_value_at(drawing_board, self.location[0], self.location[1] - 1, 0)
+            # left
+            board.set_value_at(drawing_board, self.location[0] - 1, self.location[1], 0)
+            # left-lower
+            board.set_value_at(drawing_board, self.location[0] - 1, self.location[1] - 1, 0)
+        elif self.orientation == Orientation.LEFT:
+            # center
+            board.set_value_at(drawing_board, self.location[0], self.location[1], 0)
+            # lower
+            board.set_value_at(drawing_board, self.location[0], self.location[1] - 1, 0)
+            # left
+            board.set_value_at(drawing_board, self.location[0] - 1, self.location[1], 0)
+            # left-lower
+            board.set_value_at(drawing_board, self.location[0] - 1, self.location[1] - 1, 0)
+        elif self.orientation == Orientation.RIGHT:
+            # center
+            board.set_value_at(drawing_board, self.location[0], self.location[1], 0)
+            # lower
+            board.set_value_at(drawing_board, self.location[0], self.location[1] - 1, 0)
+            # left
+            board.set_value_at(drawing_board, self.location[0] - 1, self.location[1], 0)
+            # left-lower
+            board.set_value_at(drawing_board, self.location[0] - 1, self.location[1] - 1, 0)
+
+class S_tetrimino(Tetromino):
+    def __init__(self, orientation, location):
+        super().__init__(orientation, location)
+    def add_to_board(self, drawing_board):
+        if self.orientation == Orientation.DOWN:
+            # center
+            board.set_value_at(drawing_board, self.location[0], self.location[1], 0)
+            # upper-left
+            board.set_value_at(drawing_board, self.location[0] - 1, self.location[1] + 1, 0)
+            # left
+            board.set_value_at(drawing_board, self.location[0] - 1, self.location[1], 0)
+            # lower
+            board.set_value_at(drawing_board, self.location[0], self.location[1] - 1, 0)
+        elif self.orientation == Orientation.UP:
+            # center
+            board.set_value_at(drawing_board, self.location[0], self.location[1], 0)
+            # upper
+            board.set_value_at(drawing_board, self.location[0], self.location[1] + 1, 0)
+            # left
+            board.set_value_at(drawing_board, self.location[0] - 1, self.location[1], 0)
+            # lower-left
+            board.set_value_at(drawing_board, self.location[0] - 1, self.location[1] - 1, 0)
+        elif self.orientation == Orientation.LEFT:
+            # center
+            board.set_value_at(drawing_board, self.location[0], self.location[1], 0)
+            # upper
+            board.set_value_at(drawing_board, self.location[0], self.location[1] + 1, 0)
+            # right-upper
+            board.set_value_at(drawing_board, self.location[0] + 1, self.location[1] + 1, 0)
+            # left
+            board.set_value_at(drawing_board, self.location[0] - 1, self.location[1], 0)
+        elif self.orientation == Orientation.RIGHT:
+            # center
+            board.set_value_at(drawing_board, self.location[0], self.location[1], 0)
+            # lower
+            board.set_value_at(drawing_board, self.location[0], self.location[1] + 1, 0)
+            # right
+            board.set_value_at(drawing_board, self.location[0] + 1, self.location[1], 0)
+            # lower-left
+            board.set_value_at(drawing_board, self.location[0] + 1, self.location[1] + 1, 0)
+
+
 tetrimino_1 = L_tetrimino(Orientation.RIGHT, [5, 7])
 tetrimino_1.add_to_board(board.classic_tetris_board)
 
-tetrimino_2 = J_tetrimino(Orientation.LEFT, [2, 5])
+tetrimino_2 = O_tetrimino(Orientation.LEFT, [2, 5])
 tetrimino_2.add_to_board(board.classic_tetris_board)
 
 tetrimino_3 = T_tetrimino(Orientation.DOWN, [3, 11])
 tetrimino_3.add_to_board(board.classic_tetris_board)
 
-tetrimino_4 = I_tetrimino(Orientation.UP, [8, 5])
+tetrimino_4 = S_tetrimino(Orientation.UP, [8, 5])
 tetrimino_4.add_to_board(board.classic_tetris_board)
 draw.draw_int_2d_array(board.classic_tetris_board)
