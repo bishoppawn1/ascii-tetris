@@ -43,6 +43,11 @@ def value_at(board, x, y):
   """gets value"""
   return board [__flip_y(board, y)] [x]
 
+def set_value_at(board, x, y, value):
+    board [__flip_y(board, y)] [x] = value
+    return board
+
+
 def is_play_space(board, x, y):
   """checks is the space is a legit play space"""
   coordinate_value = value_at(board, x, y)
@@ -64,7 +69,7 @@ def is_occupied(board, x, y):
   else:
     return False
 
-board2 = copy(classic_tetris_board)
-board2[4][3] = 31
-draw.draw_int_2d_array(board2)
-draw.draw_int_2d_array(classic_tetris_board)
+# board2 = copy(classic_tetris_board)
+# set_value_at(board2, 7, 6, 0)
+# draw.draw_int_2d_array(board2)
+# draw.draw_int_2d_array(classic_tetris_board)

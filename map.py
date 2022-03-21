@@ -4,7 +4,7 @@ class Person:
         self.age = age
 
     def hi(self):
-        print("hi my age and name are " + self.name + " " + self.age)
+        print("hi my age and name are " + self.name + " and " + self.age)
 
 list1 = []
 list1.append(Person("Bishop", "8"))
@@ -16,3 +16,4 @@ while len(list1) > i:
     z = list1[i]
     z.hi()
     i += 1
+
