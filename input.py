@@ -1,9 +1,9 @@
 import keyboard
 import time
 
-
-time.sleep(1)
-print("d")
+while True:
+  time.sleep(1)
+  print("nil")
 
 
 
